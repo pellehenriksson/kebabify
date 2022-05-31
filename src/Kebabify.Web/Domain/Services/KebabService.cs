@@ -16,6 +16,11 @@ namespace Kebabify.Domain.Services
             this.logger = logger;
         }
 
+        protected KebabService()
+        {
+            // this is just for making mocking possible
+        }
+
         public virtual Result Make(Parameters parameters)
         {
             if (parameters == null)
