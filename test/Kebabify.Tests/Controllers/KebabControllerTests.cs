@@ -5,7 +5,6 @@ using Kebabify.Web.Domain.Models;
 using MediatR;
 
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 using Moq;
 
@@ -41,8 +40,8 @@ namespace Kebabify.Tests.Controllers
 
         private class Testable : KebabController
         {
-            private Testable(Mock<IMediator> mediator, Mock<ILogger<KebabController>> logger)
-                : base(mediator.Object, logger.Object)
+            private Testable(Mock<IMediator> mediator)
+                : base(mediator.Object)
             {
                 this.Mediator = mediator;
             }
@@ -51,7 +50,7 @@ namespace Kebabify.Tests.Controllers
 
             public static Testable Create()
             {
-                return new Testable(new Mock<IMediator>(), new Mock<ILogger<KebabController>>());
+                return new Testable(new Mock<IMediator>());
             }
         }
     }

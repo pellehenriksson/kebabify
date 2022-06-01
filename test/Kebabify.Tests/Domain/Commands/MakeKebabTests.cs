@@ -15,7 +15,7 @@ namespace Kebabify.Tests.Domain.Commands
         {
             var sut = Testable.Create();
 
-            var resut = Assert.ThrowsAsync<ArgumentNullException>(() => sut.Handle(null, CancellationToken.None));
+            var resut = await Assert.ThrowsAsync<ArgumentNullException>(() => sut.Handle(null, CancellationToken.None));
         }
 
         [Fact]

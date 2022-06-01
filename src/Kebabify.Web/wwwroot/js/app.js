@@ -15,8 +15,16 @@
     }
 
     function copy() {
-        $('#kebab').select();
-        document.execCommand('copy');
+        var text = $('#kebab-textbox').val();
+
+        var temp = document.createElement("textarea");
+        document.body.appendChild(temp);
+
+        temp.value = text;
+        temp.select();
+
+        document.execCommand("copy");
+        document.body.removeChild(temp);
     }
 
     function initEventHandlers() {

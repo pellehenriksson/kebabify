@@ -19,7 +19,7 @@ namespace Kebabify.Web.Domain.Commands
             this.logger = logger;
         }
 
-        public async Task<KebabModel> Handle(Command command, CancellationToken cancellationToken)
+        public Task<KebabModel> Handle(Command command, CancellationToken cancellationToken)
         {
             if (command == null)
             {
@@ -40,13 +40,13 @@ namespace Kebabify.Web.Domain.Commands
 
             this.logger.LogDebug("Return results");
 
-            return result;
+            return Task.FromResult(result);
         }
 
         public class Command : IRequest<KebabModel>
         {
             [Required]
-            public string? Input { get; set; } 
+            public string Input { get; set; } 
         }
     }
 }

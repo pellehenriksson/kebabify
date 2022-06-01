@@ -6,13 +6,13 @@ namespace Kebabify.Domain.Services
 {
     public class KebabService
     {
-        private readonly SystemClock service;
+        private readonly SystemClock clock;
 
         private readonly ILogger<KebabService> logger;
 
-        public KebabService(SystemClock service, ILogger<KebabService> logger)
+        public KebabService(SystemClock clock, ILogger<KebabService> logger)
         {
-            this.service = service;
+            this.clock = clock;
             this.logger = logger;
         }
 
@@ -28,15 +28,15 @@ namespace Kebabify.Domain.Services
                 this.logger.LogWarning($"{nameof(parameters)} is null");
                 return new Result
                 {
-                    Started = this.service.Now(),
-                    Completed = this.service.Now()
+                    Started = this.clock.Now(),
+                    Completed = this.clock.Now()
                 };
             }
 
             var result = new Result
             {
                 Input = parameters.Input,
-                Started = this.service.Now()
+                Started = this.clock.Now()
             };
 
             if (string.IsNullOrWhiteSpace(parameters.Input))
@@ -60,7 +60,7 @@ namespace Kebabify.Domain.Services
             if (words.All(string.IsNullOrWhiteSpace))
             {
                 this.logger.LogWarning($"There are no words left after cleaning");
-                result.Completed = this.service.Now();
+                result.Completed = this.clock.Now();
                 return result;
             }
 
@@ -68,7 +68,7 @@ namespace Kebabify.Domain.Services
             this.logger.LogDebug($"Join words and lower case");
             var kebab = words.Where(x => !string.IsNullOrWhiteSpace(x)).Aggregate((current, aggregated) => $"{current}-{aggregated}").ToLowerInvariant();
             result.Kebab = kebab;
-            result.Completed = this.service.Now();
+            result.Completed = this.clock.Now();
 
             this.logger.LogDebug($"Result is {result.Kebab}");
 

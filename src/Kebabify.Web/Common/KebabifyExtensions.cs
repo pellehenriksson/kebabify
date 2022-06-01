@@ -5,7 +5,7 @@ namespace Kebabify.Web.Common
 {
     public static class KebabifyExtensions
     {
-        private static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
+        private static readonly JsonSerializerSettings Settings = new ()
         {
             ContractResolver = new CamelCasePropertyNamesContractResolver()
         };

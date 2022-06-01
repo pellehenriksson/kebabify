@@ -13,12 +13,9 @@ namespace Kebabify.Web.Controllers
     {
         private readonly IMediator mediator;
 
-        private readonly ILogger<KebabController> logger;
-
-        public KebabController(IMediator mediator, ILogger<KebabController> logger)
+        public KebabController(IMediator mediator)
         {
             this.mediator = mediator;
-            this.logger = logger;
         }
 
         [HttpGet]
