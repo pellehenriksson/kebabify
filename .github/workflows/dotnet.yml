@@ -25,3 +25,9 @@ jobs:
       run: dotnet test --no-build --verbosity normal
     - name: Publish
       run: dotnet publish src/Kebabify.Web/Kebabify.Web.csproj -c Release -o website
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v2.2.2
+      with:
+        name: website
+        path: Kebabify.Web/website/**
+        if-no-files-found: error
