@@ -26,8 +26,8 @@ jobs:
     - name: Publish
       run: dotnet publish src/Kebabify.Web/Kebabify.Web.csproj -c Release -o website
     - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v2.2.2
+      uses: actions/upload-artifact@v3.1.0
       with:
         name: website
-        path: kebabify/kebabify/website/**
+        path: website/**
         if-no-files-found: error
