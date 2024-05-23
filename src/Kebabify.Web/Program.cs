@@ -1,3 +1,5 @@
+﻿using System.Runtime.CompilerServices;
+
 using Kebabify.Domain.Services;
 using Kebabify.Web.Common;
 using Kebabify.Web.Domain.Commands;
@@ -14,7 +16,7 @@ namespace Kebabify.Web
 
             builder.Services.AddRazorPages();
             builder.Services.AddControllers();
-            builder.Services.AddMediatR(typeof(MakeKebab).Assembly);
+            builder.Services.AddMediatR((cfg) => cfg.RegisterServicesFromAssembly(typeof(MakeKebab).Assembly));
 
             builder.Services.AddTransient<KebabService, KebabService>();
             builder.Services.AddSingleton(new SystemClock());
