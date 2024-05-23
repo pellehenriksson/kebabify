@@ -2,4 +2,4 @@
 api for kebabification of strings
 
 
-[![.NET](https://github.com/pellehenriksson/kebabify/actions/workflows/dotnet.yml/badge.svg)](https://github.com/pellehenriksson/kebabify/actions/workflows/dotnet.yml)
+[![kebabify - CI](https://github.com/pellehenriksson/kebabify/actions/workflows/dotnet.yml/badge.svg)](https://github.com/pellehenriksson/kebabify/actions/workflows/dotnet.yml)
