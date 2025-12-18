@@ -9,14 +9,9 @@ namespace Kebabify.Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class KebabController : ControllerBase
+    public class KebabController(IMediator mediator) : ControllerBase
     {
-        private readonly IMediator mediator;
-
-        public KebabController(IMediator mediator)
-        {
-            this.mediator = mediator;
-        }
+        private readonly IMediator mediator = mediator;
 
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(string))]

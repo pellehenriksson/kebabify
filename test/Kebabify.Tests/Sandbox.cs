@@ -1,4 +1,4 @@
-namespace Kebabify.Tests
+﻿namespace Kebabify.Tests
 {
     public class Sandbox
     {
