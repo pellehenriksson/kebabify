@@ -2,7 +2,7 @@
 
 using Kebabify.Web.Common;
 
-namespace Kebabify.Domain.Services
+namespace Kebabify.Web.Domain.Services
 {
     public class KebabService
     {
@@ -25,7 +25,7 @@ namespace Kebabify.Domain.Services
         {
             if (parameters == null)
             {
-                this.logger.LogWarning($"{nameof(parameters)} is null");
+                this.logger.LogWarning("{parameters} is null", nameof(parameters));
                 return new Result
                 {
                     Started = this.clock.Now(),
@@ -41,36 +41,36 @@ namespace Kebabify.Domain.Services
 
             if (string.IsNullOrWhiteSpace(parameters.Input))
             {
-                this.logger.LogWarning($"{nameof(parameters)} is null");
+                this.logger.LogWarning("{parameters} is null", nameof(parameters));
                 return result;
             }
 
             //// split words
-            this.logger.LogDebug($"Split {parameters.Input} into words");
+            this.logger.LogDebug("Split '{input}' into words", parameters.Input);
             var words = parameters.Input.Split(" ", StringSplitOptions.RemoveEmptyEntries);
 
             //// clean
             for (var index = 0; index < words.Length; index++)
             {
-                this.logger.LogDebug($"Clean {words[index]}");
+                this.logger.LogDebug("Clean: '{word}'", words[index]);
                 words[index] = RemoveSpecialCharacters(words[index]);
             }
 
             //// if no word left
             if (words.All(string.IsNullOrWhiteSpace))
             {
-                this.logger.LogWarning($"There are no words left after cleaning");
+                this.logger.LogWarning("There are no words left after cleaning");
                 result.Completed = this.clock.Now();
                 return result;
             }
 
             //// join words
-            this.logger.LogDebug($"Join words and lower case");
+            this.logger.LogDebug("Join words and lower case");
             var kebab = words.Where(x => !string.IsNullOrWhiteSpace(x)).Aggregate((current, aggregated) => $"{current}-{aggregated}").ToLowerInvariant();
             result.Kebab = kebab;
             result.Completed = this.clock.Now();
 
-            this.logger.LogDebug($"Result is {result.Kebab}");
+            this.logger.LogDebug("Result is: '{result}'", result.Kebab);
 
             return result;
         }

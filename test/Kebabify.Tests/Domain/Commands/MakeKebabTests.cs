@@ -1,5 +1,5 @@
-﻿using Kebabify.Domain.Services;
-using Kebabify.Web.Domain.Commands;
+﻿using Kebabify.Web.Domain.Commands;
+using Kebabify.Web.Domain.Services;
 
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;

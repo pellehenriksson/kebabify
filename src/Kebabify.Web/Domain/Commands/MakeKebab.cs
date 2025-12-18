@@ -1,5 +1,5 @@
-﻿using Kebabify.Domain.Services;
-using Kebabify.Web.Domain.Models;
+﻿using Kebabify.Web.Domain.Models;
+using Kebabify.Web.Domain.Services;
 
 using MediatR;
 
@@ -21,10 +21,7 @@ namespace Kebabify.Web.Domain.Commands
 
         public Task<KebabModel> Handle(Command command, CancellationToken cancellationToken)
         {
-            if (command == null)
-            {
-                throw new ArgumentNullException(nameof(command));
-            }
+            ArgumentNullException.ThrowIfNull(command);
 
             this.logger.LogDebug("Make kebab");
             var kebab = this.kebabService.Make(new KebabService.Parameters { Input = command.Input });
