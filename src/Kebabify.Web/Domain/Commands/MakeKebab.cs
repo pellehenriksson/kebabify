@@ -7,17 +7,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Kebabify.Web.Domain.Commands
 {
-    public class MakeKebab : IRequestHandler<MakeKebab.Command, KebabModel>
+    public class MakeKebab(KebabService kebabService, ILogger<MakeKebab> logger) : IRequestHandler<MakeKebab.Command, KebabModel>
     {
-        private readonly KebabService kebabService;
+        private readonly KebabService kebabService = kebabService;
 
-        private readonly ILogger<MakeKebab> logger;
-
-        public MakeKebab(KebabService kebabService, ILogger<MakeKebab> logger)
-        {
-            this.kebabService = kebabService;
-            this.logger = logger;
-        }
+        private readonly ILogger<MakeKebab> logger = logger;
 
         public Task<KebabModel> Handle(Command command, CancellationToken cancellationToken)
         {

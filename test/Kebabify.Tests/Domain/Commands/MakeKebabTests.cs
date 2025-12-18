@@ -41,14 +41,9 @@ namespace Kebabify.Tests.Domain.Commands
             Assert.Equal(kebab.Completed, result.Completed);
         }
 
-        public class Testable : MakeKebab
+        public class Testable(Mock<KebabService> kebabService, ILogger<MakeKebab> logger) : MakeKebab(kebabService.Object, logger)
         {
-            public Testable(Mock<KebabService> kebabService, ILogger<MakeKebab> logger) : base(kebabService.Object, logger)
-            {
-                this.Service = kebabService;
-            }
-
-            public Mock<KebabService> Service { get; }
+            public Mock<KebabService> Service { get; } = kebabService;
 
             public static Testable Create()
             {
