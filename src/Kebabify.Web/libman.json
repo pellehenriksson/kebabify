@@ -4,7 +4,7 @@
   "defaultDestination": "wwwroot/lib",
   "libraries": [
     {
-      "library": "jquery@3.6.0",
+      "library": "jquery@3.7.1",
       "files": [
         "jquery.min.js",
         "jquery.js",
@@ -13,8 +13,12 @@
       "destination": "wwwroot/lib/jquery/"
     },
     {
-      "library": "skeleton@2.0.4",
-      "destination": "wwwroot/lib/skeleton"
+      "library": "bootstrap@5.3.3",
+      "destination": "wwwroot/lib/bootstrap/",
+      "files": [
+        "dist/css/bootstrap.min.css",
+        "dist/js/bootstrap.bundle.min.js"
+      ]
     }
   ]
 }
