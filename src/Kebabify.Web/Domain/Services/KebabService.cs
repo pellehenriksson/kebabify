@@ -77,16 +77,16 @@ namespace Kebabify.Web.Domain.Services
 
         private static string RemoveSpecialCharacters(string word)
         {
-            string result = string.Empty;
+            var sb = new System.Text.StringBuilder();
             foreach (var c in word)
             {
                 if (char.IsLetterOrDigit(c))
                 {
-                    result += c;
+                    sb.Append(c);
                 }
             }
 
-            return result;
+            return sb.ToString();
         }
 
         public class Parameters

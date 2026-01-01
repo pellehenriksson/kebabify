@@ -1,7 +1,7 @@
 ﻿using Kebabify.Web.Common;
 using Kebabify.Web.Domain.Commands;
 using Kebabify.Web.Domain.Services;
-using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi;
 using System.Reflection;
 
 namespace Kebabify.Web
